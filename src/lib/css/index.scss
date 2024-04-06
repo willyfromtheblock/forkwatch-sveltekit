@@ -78,6 +78,9 @@ footer {
 	justify-content: space-evenly;
 	margin: 1rem;
 }
+.progress-circle {
+	min-height: 200px;
+}
 
 .chart {
 	&-container {
@@ -88,6 +91,7 @@ footer {
 		@media (min-width: 1440px) {
 			width: 50vw;
 		}
+		min-height: 400px;
 		width: 90vw;
 	}
 }
