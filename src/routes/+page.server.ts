@@ -5,7 +5,6 @@ export async function load({ fetch }) {
 	const currentResponse = await fetch('https://fork.peercoinexplorer.net/v5_current.dat');
 	const currentText = await currentResponse.text();
 	const progress = parseFloat(currentText.split(',')[1]);
-
 	// Fetch the fork activation timestamp from the backend
 	let forkActivated = 0;
 	const reachedThresholdResponse = await fetch(
@@ -32,6 +31,7 @@ export async function load({ fetch }) {
 	return {
 		forkActivated,
 		progress,
-		chartData
+		chartData,
+		lastUpdate: currentResponse.headers.get('last-modified')
 	};
 }

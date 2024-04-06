@@ -3,7 +3,7 @@
 	import Chart from '$lib/components/Chart.svelte';
 
 	export let data;
-	const { forkActivated, progress, chartData } = data;
+	const { forkActivated, progress, chartData, lastUpdate } = data;
 
 	let activationTimeReached = Date.now() >= 1717416000 * 1000;
 	const isOver75Percent = progress >= 75;
@@ -60,5 +60,6 @@
 			</a>
 		</div>
 		<div class="ppc-donation">Donations: PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9</div>
+		<div>Last update: {lastUpdate}</div>
 	</footer>
 </div>
