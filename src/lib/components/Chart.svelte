@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { ChartData } from '$lib/types/ChartData';
 	import * as Highcharts from 'highcharts';
 	import Exporting from 'highcharts/modules/exporting';
 	import { onMount } from 'svelte';
 
-	export let chartData: Array<any> = [];
+	export let chartData: ChartData[] = [];
 
 	const options: Highcharts.Options = {
 		chart: {
