@@ -1,3 +1,5 @@
+import type { ChartData } from '$lib/types/ChartData.js';
+
 export async function load({ fetch }) {
 	// Fetch the current progress from the backend
 	const currentResponse = await fetch('https://fork.peercoinexplorer.net/v5_current.dat');
@@ -15,7 +17,8 @@ export async function load({ fetch }) {
 	}
 
 	// Fetch the chart data from the backend
-	let chartData: Array<any> = [];
+	// Initialize the chartData array with the specific type
+	const chartData: ChartData[] = [];
 	const historyResponse = await fetch('https://fork.peercoinexplorer.net/v5_history_grouped.dat');
 	const text = await historyResponse.text();
 	const splitText = text.split('\n');
