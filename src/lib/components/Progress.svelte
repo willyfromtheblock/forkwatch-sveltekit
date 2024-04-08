@@ -6,7 +6,7 @@
 	});
 </script>
 
-<circle-progress value={progress} max="100" text-format="percent" />
+<circle-progress value={progress} max="100" text-format="value" />
 
 <style>
 	::part(base) {
