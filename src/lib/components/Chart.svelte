@@ -12,7 +12,7 @@
 		},
 		colors: ['#3cb054', '#b35900', 'dodgerblue'],
 		title: {
-			text: 'v5 Blocks Progress'
+			text: 'v6 Blocks Progress'
 		},
 		legend: {
 			enabled: false
