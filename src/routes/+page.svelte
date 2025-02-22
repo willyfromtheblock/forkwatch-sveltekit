@@ -30,7 +30,7 @@
 					<td>
 						<img src={isOver75Percent ? 'img/check.png' : 'img/cross.png'} alt="status" />
 					</td>
-					<td> 75% majority block version 5 over the last 1000 blocks reached </td>
+					<td> 75% majority block version 6 over the last 1000 blocks reached </td>
 				</tr>
 				<tr>
 					<td>
