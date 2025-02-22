@@ -5,7 +5,7 @@
 	export let data;
 	const { forkActivated, progress, chartData, lastUpdate } = data;
 
-	let activationTimeReached = Date.now() >= 1717416000 * 1000;
+	let activationTimeReached = Date.now() >= 1741780800 * 1000;
 	const isOver75Percent = progress >= 75;
 </script>
 
@@ -36,7 +36,7 @@
 					<td>
 						<img src={activationTimeReached ? 'img/check.png' : 'img/cross.png'} alt="status" />
 					</td>
-					<td>June 3rd, 2024 - 12:00 UTC reached</td>
+					<td>March 12th, 2025 - 12:00 UTC reached</td>
 				</tr>
 			</table>
 			<div class="flex-center ppc-fork-active m-y-2">
