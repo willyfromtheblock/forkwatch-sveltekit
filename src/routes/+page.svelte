@@ -18,7 +18,7 @@
 				alt="peercoin logo"
 			/>
 		</div>
-		<h1>0.14 Fork Watcher</h1>
+		<h1>0.15 Fork Watcher</h1>
 	</div>
 	<div class="ppc-background">
 		<div class="flex-center m-y-2 progress-circle">
