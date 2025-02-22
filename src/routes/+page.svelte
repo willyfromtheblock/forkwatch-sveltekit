@@ -55,7 +55,7 @@
 	</div>
 	<footer class="ppc-footer m-y-1">
 		<div>
-			<a href="https://ppc.lol/v5-announcement" rel="noopener norefferer" target="_blank">
+			<a href="https://ppc.lol/v6-announcement" rel="noopener norefferer" target="_blank">
 				What is this about?
 			</a>
 		</div>
