@@ -1,24 +1,26 @@
 import type { ChartData } from '$lib/types/ChartData.js';
 
 export async function load({ fetch }) {
-	// Fetch the current progress from the backend
-	const currentResponse = await fetch('https://fork.peercoinexplorer.net/v6_current.dat');
+	// Fetch all data concurrently
+	const [currentResponse, reachedThresholdResponse, historyResponse] = await Promise.all([
+		fetch('https://fork.peercoinexplorer.net/v6_current.dat'),
+		fetch('https://fork.peercoinexplorer.net/v6_fork_activated.dat'),
+		fetch('https://fork.peercoinexplorer.net/v6_history_grouped.dat')
+	]);
+
+	// Process current progress
 	const currentText = await currentResponse.text();
 	const progress = parseFloat(currentText.split(',')[1]);
-	// Fetch the fork activation timestamp from the backend
+
+	// Process fork activation timestamp
 	let forkActivated = 0;
-	const reachedThresholdResponse = await fetch(
-		'https://fork.peercoinexplorer.net/v6_fork_activated.dat'
-	);
 	const forkActivatedResult = await reachedThresholdResponse.json();
 	if (forkActivatedResult > 0) {
 		forkActivated = forkActivatedResult * 1000;
 	}
 
-	// Fetch the chart data from the backend
-	// Initialize the chartData array with the specific type
+	// Process chart data
 	const chartData: ChartData[] = [];
-	const historyResponse = await fetch('https://fork.peercoinexplorer.net/v6_history_grouped.dat');
 	const text = await historyResponse.text();
 	const splitText = text.split('\n');
 
