@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	export let progress = 0;
+	let { progress = 0 }: { progress?: number } = $props();
 	onMount(async () => {
 		await import('js-circle-progress');
 	});
 </script>
 
-<circle-progress value={progress} max="100" text-format="value" />
+<circle-progress value={progress} max="100" text-format="value"></circle-progress>
 
 <style>
 	::part(base) {

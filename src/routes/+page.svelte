@@ -2,11 +2,10 @@
 	import Progress from '$lib/components/Progress.svelte';
 	import Chart from '$lib/components/Chart.svelte';
 
-	export let data;
-	const { forkActivated, progress, chartData, lastUpdate } = data;
+	let { data } = $props();
 
 	let activationTimeReached = Date.now() >= 1741780800 * 1000;
-	const isOver75Percent = progress >= 75;
+	const isOver75Percent = $derived(data.progress >= 75);
 </script>
 
 <div class="ppc-hero">
@@ -22,27 +21,29 @@
 	</div>
 	<div class="ppc-background">
 		<div class="flex-center m-y-2 progress-circle">
-			<Progress {progress} />
+			<Progress progress={data.progress} />
 		</div>
 		<div>
 			<table class="ppc-table">
-				<tr>
-					<td>
-						<img src={isOver75Percent ? 'img/check.png' : 'img/cross.png'} alt="status" />
-					</td>
-					<td> 75% majority block version 6 over the last 1000 blocks reached </td>
-				</tr>
-				<tr>
-					<td>
-						<img src={activationTimeReached ? 'img/check.png' : 'img/cross.png'} alt="status" />
-					</td>
-					<td>March 12th, 2025 - 12:00 UTC reached</td>
-				</tr>
+				<tbody>
+					<tr>
+						<td>
+							<img src={isOver75Percent ? 'img/check.png' : 'img/cross.png'} alt="status" />
+						</td>
+						<td> 75% majority block version 6 over the last 1000 blocks reached </td>
+					</tr>
+					<tr>
+						<td>
+							<img src={activationTimeReached ? 'img/check.png' : 'img/cross.png'} alt="status" />
+						</td>
+						<td>March 12th, 2025 - 12:00 UTC reached</td>
+					</tr>
+				</tbody>
 			</table>
 			<div class="flex-center ppc-fork-active m-y-2">
-				{#if forkActivated > 0}
+				{#if data.forkActivated > 0}
 					<h2>
-						Fork activated since {new Date(forkActivated).toUTCString()}
+						Fork activated since {new Date(data.forkActivated).toUTCString()}
 					</h2>
 				{:else}
 					<h2>Fork not activated</h2>
@@ -50,7 +51,7 @@
 			</div>
 		</div>
 		<div class="m-y-2 flex-center">
-			<Chart {chartData} />
+			<Chart chartData={data.chartData} />
 		</div>
 	</div>
 	<footer class="ppc-footer m-y-1">
@@ -60,6 +61,6 @@
 			</a>
 		</div>
 		<div class="ppc-donation">Donations: PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9</div>
-		<div>Last update: {lastUpdate}</div>
+		<div>Last update: {data.lastUpdate}</div>
 	</footer>
 </div>
