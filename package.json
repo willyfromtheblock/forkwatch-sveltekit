@@ -33,7 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"highcharts": "^11.4.1",
+		"highcharts": "^11.4.9",
 		"js-circle-progress": "^1.0.0-beta.0"
 	}
 }
